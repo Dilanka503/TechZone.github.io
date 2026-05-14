@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechZone Gadget Store | Latest Electronics</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-color: #1f2937;
+            --bg-color: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/GReynJSZzHOMErgc.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #d97706;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto;
+        }
+
+        .category-section {
+            margin-bottom: 4rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #e5e7eb;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+            height: 3rem;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .availability {
+            font-size: 0.8rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+
+        .in-stock {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .limited {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .special-offers {
+            background-color: #1e293b;
+            color: var(--white);
+            padding: 4rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .offer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .offer-card {
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            padding: 2rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        footer {
+            background-color: #111827;
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .offer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">TechZone</a>
+            <ul class="nav-links">
+                <li><a href="#smartphones">Smartphones</a></li>
+                <li><a href="#laptops">Laptops</a></li>
+                <li><a href="#audio">Audio</a></li>
+                <li><a href="#wearables">Wearables</a></li>
+                <li><a href="#gaming">Gaming</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to TechZone</h1>
+        <p>Your Ultimate Destination for the Latest Gadgets & Electronics</p>
+        <a href="#new-arrivals" class="btn">Shop New Arrivals</a>
+    </section>
+
+    <div class="container">
+        
+        <!-- Special Offers & New Arrivals -->
+        <section id="new-arrivals" class="category-section">
+            <h2 class="section-title">Special Offers & New Arrivals</h2>
+            <div class="offer-grid">
+                <div class="offer-card">
+                    <div>
+                        <h3>Summer Sale!</h3>
+                        <p>Up to 30% off on all Audio gear</p>
+                        <a href="#audio" class="btn" style="margin-top: 1rem; padding: 0.5rem 1rem;">View Deals</a>
+                    </div>
+                    <span style="font-size: 3rem;">🎧</span>
+                </div>
+                <div class="offer-card" style="background: linear-gradient(45deg, #f59e0b, #d97706);">
+                    <div>
+                        <h3>New Arrival</h3>
+                        <p>iPhone 15 Pro Max is here</p>
+                        <a href="#smartphones" class="btn" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #1e293b;">Order Now</a>
+                    </div>
+                    <span style="font-size: 3rem;">📱</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smartphones -->
+        <section id="smartphones" class="category-section">
+            <h2 class="section-title">Smartphones</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/LcPHAbLoaOUZNeCc.jpg" alt="iPhone 15 Pro Max" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">iPhone 15 Pro Max</div>
+                        <div class="product-desc">Titanium design, A17 Pro chip, and the most advanced camera system.</div>
+                        <div class="product-price">
+                            $1,199
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/UtwPqlgCquZHRBHy.jpg" alt="Samsung Galaxy S24 Ultra" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Samsung Galaxy S24 Ultra</div>
+                        <div class="product-desc">Galaxy AI is here. Experience the ultimate smartphone with S Pen.</div>
+                        <div class="product-price">
+                            $1,299
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/KyVFDlbaZtCHBTKI.jpg" alt="Google Pixel 8 Pro" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Google Pixel 8 Pro</div>
+                        <div class="product-desc">The all-pro phone engineered by Google with the best Pixel camera yet.</div>
+                        <div class="product-price">
+                            $999
+                            <span class="availability limited">Limited Stock</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Laptops -->
+        <section id="laptops" class="category-section">
+            <h2 class="section-title">Laptops</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/uLwHNibsAmvZiigb.png" alt="MacBook Air M3" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">MacBook Air M3</div>
+                        <div class="product-desc">Supercharged by M3 chip. Strikingly thin and fast.</div>
+                        <div class="product-price">
+                            $1,099
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/fdYnbHMrKMFXCYGy.jpg" alt="Dell XPS 13" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Dell XPS 13</div>
+                        <div class="product-desc">The smallest 13-inch laptop with a stunning InfinityEdge display.</div>
+                        <div class="product-price">
+                            $999
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/PnruydgPnGSEAxKg.jpg" alt="ASUS ROG Zephyrus G14" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">ASUS ROG Zephyrus G14</div>
+                        <div class="product-desc">Powerful, portable, and versatile gaming laptop.</div>
+                        <div class="product-price">
+                            $1,599
+                            <span class="availability limited">Limited Stock</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Audio & Headphones -->
+        <section id="audio" class="category-section">
+            <h2 class="section-title">Audio & Headphones</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/CdYjYKVjRjAOhzJY.jpg" alt="Sony WH-1000XM5" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sony WH-1000XM5</div>
+                        <div class="product-desc">Industry-leading noise cancellation and magnificent sound.</div>
+                        <div class="product-price">
+                            $399
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/iNfRSUaBRzNirRdW.jpg" alt="Bose QuietComfort Ultra" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Bose QuietComfort Ultra</div>
+                        <div class="product-desc">World-class noise cancellation and spatialized audio.</div>
+                        <div class="product-price">
+                            $429
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/CdYjYKVjRjAOhzJY.jpg" alt="Apple AirPods Pro 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Apple AirPods Pro 2</div>
+                        <div class="product-desc">Magic like you've never heard. Now with USB-C charging.</div>
+                        <div class="product-price">
+                            $249
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smartwatches / Wearables -->
+        <section id="wearables" class="category-section">
+            <h2 class="section-title">Smartwatches / Wearables</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/qcvJSakyWmUjhYsf.png" alt="Apple Watch Ultra 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Apple Watch Ultra 2</div>
+                        <div class="product-desc">The most rugged and capable Apple Watch ever.</div>
+                        <div class="product-price">
+                            $799
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/iRuYNhcGFTeOztJS.jpg" alt="Samsung Galaxy Watch 6" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Samsung Galaxy Watch 6</div>
+                        <div class="product-desc">Advanced health tracking and a sleek, circular design.</div>
+                        <div class="product-price">
+                            $299
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/ZzTbDodYXKYTeAYx.jpg" alt="Garmin Fenix 7" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Garmin Fenix 7</div>
+                        <div class="product-desc">Multisport GPS watch designed for athletes and adventurers.</div>
+                        <div class="product-price">
+                            $649
+                            <span class="availability limited">Limited Stock</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gaming Accessories -->
+        <section id="gaming" class="category-section">
+            <h2 class="section-title">Gaming Accessories</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/ABsWRPPjqnAjDoxd.jpg" alt="Logitech G PRO X Superlight 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Logitech G PRO X Superlight 2</div>
+                        <div class="product-desc">The world's favorite pro gaming mouse, now faster and more precise.</div>
+                        <div class="product-price">
+                            $159
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/ZQVSdZNaWGxYabPi.jpg" alt="Razer DeathAdder V3 Pro" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Razer DeathAdder V3 Pro</div>
+                        <div class="product-desc">Ultra-lightweight wireless ergonomic gaming mouse.</div>
+                        <div class="product-price">
+                            $149
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663659429299/wCQDbqPuWlbpvMyC.jpg" alt="SteelSeries Apex Pro" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">SteelSeries Apex Pro</div>
+                        <div class="product-desc">The world's fastest mechanical gaming keyboard.</div>
+                        <div class="product-price">
+                            $199
+                            <span class="availability in-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#smartphones">Smartphones</a>
+            <a href="#laptops">Laptops</a>
+            <a href="#audio">Audio</a>
+            <a href="#wearables">Wearables</a>
+            <a href="#gaming">Gaming</a>
+        </div>
+        <p>&copy; 2026 TechZone Gadget Store. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
